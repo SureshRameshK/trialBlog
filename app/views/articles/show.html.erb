@@ -1,0 +1,19 @@
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= link_to raw("<i class=\"fa fa-home\"> Home </i>"), root_path, method: :get, class:'home-btn'%>
+
+<div class=article-box>
+<h1 style='color:darkblue'><%= @article.title %></h1>
+<p style='color:brown; font-size:larger'> Description: <%= @article.body %></p>
+
+
+
+<%= link_to "Edit", edit_article_path(@article) %> | 
+<%= link_to "Destroy", article_path(@article),method: :delete, data: { confirm: "Are you sure?" } %>
+</div>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h3>Add a comment:</h3>
+<%= render 'comments/form' %>

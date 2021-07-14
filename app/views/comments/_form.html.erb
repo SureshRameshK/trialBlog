@@ -1,0 +1,15 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter , :style => 'font-size: medium; font-weight:bold'%><br>
+    <%= form.text_field :commenter , :class => 'form_feild'%>
+
+    <%= form.label :Comment, :style => 'font-size: medium; font-weight:bold'%><br>
+    <%= form.text_area :body, :class => 'form_feild' %>
+
+    <%= form.label :status , :style => 'font-size: medium; font-weight:bold'%><br>
+    <%= form.select(:status, ['public', 'private', 'archived'], {} , { :style => 'font-size: medium; padding: 1px; border-radius: 5px;' })%>
+  </p>
+  <p>
+    <%= form.submit "Submit Comment" , :class => 'submit'%>
+  </p>
+<% end %>

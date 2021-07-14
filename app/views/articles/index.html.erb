@@ -1,0 +1,33 @@
+<h1 style='color:darkblue'>Articles</h1>
+
+<div class="alert info">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <h3><strong>Info!...</strong> Our blog has <%= Article.public_count %> articles and counting!<h3>
+</div>
+
+<table>
+  <tr>
+    <th style="background-color: brown; color:white">Title</th>
+    <th style="background-color: brown; color:white">Description</th>
+    <th style="background-color: brown; color:white">Status</th>
+    <th style="background-color: brown; color:white">Edit | Delete Article</th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <% if article.archived? %>
+      <tr style="background-color: lightyellow;">
+    <% else %>
+      <tr>
+    <% end %>
+        <td><%= link_to article.title, article %></td>
+        <td><%=article.body%></td>
+        <td><%=article.status%></td>
+        <td><%= link_to "Edit", edit_article_path(article) %> | 
+  <%= link_to "Destroy", article_path(article),method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+  <% end %>
+
+</table>
+
+
+<h2><%= link_to "Create Article", new_article_path %><h2>

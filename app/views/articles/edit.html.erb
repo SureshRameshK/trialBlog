@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%= link_to raw("<i class=\"fa fa-home\"> Home </i>"), root_path, method: :get, class:'home-btn'%>
+
+<h1>Edit Article</h1>
+
+<%= render "form", article: @article %>

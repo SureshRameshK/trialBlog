@@ -1,0 +1,27 @@
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title , :style => 'font-size: x-large; font-weight:bold'%><br>
+    <%= form.text_field :title  , :class => 'form_feild' %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div style="color:red;"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description , :style => 'font-size: x-large; font-weight:bold'%><br>
+    <%= form.text_area :body , :class => 'form_feild' %><br>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div style="color:red;"><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :status , :style => 'font-size: x-large; font-weight:bold'%><br>
+    <%= form.select(:status, ['public', 'private', 'archived'], {}, { :class => 'form_feild' } )%>
+  </div>
+  <br>
+
+  <div>
+    <%= form.submit "Submit" , :class => 'submit'%>
+  </div>
+<% end %>
